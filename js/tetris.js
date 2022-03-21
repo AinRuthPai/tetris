@@ -4,7 +4,9 @@ import BLOCKS from "./blocks.js";
 const playground = document.querySelector(".playground > ul");
 const gameText = document.querySelector(".game_text");
 const scoreDisplay = document.querySelector(".score");
-const restartButton = document.querySelector(".game_text > button");
+const restartButton = document.querySelector(".restart");
+const startGame = document.querySelector(".startGame");
+const endScore = document.querySelector(".endScore");
 
 // Setting
 const GAME_ROWS = 20;
@@ -12,7 +14,7 @@ const GAME_COLS = 10;
 
 // variables
 let score = 0;
-let duration = 500;
+let duration = 1000;
 let downInterval;
 let tempMovingItem;
 
@@ -23,7 +25,10 @@ const movingItem = {
   left: 3,
 };
 
-init();
+startGame.addEventListener("click", () => {
+  init();
+  startGame.style.display = "none";
+});
 
 // function
 function init() {
@@ -32,6 +37,7 @@ function init() {
   for (let i = 0; i < GAME_ROWS; i++) {
     prependNewLine();
   }
+
   generateNewBlock();
 }
 
@@ -102,6 +108,7 @@ function checkMatch() {
       prependNewLine();
       score++;
       scoreDisplay.innerText = score;
+      endScore.innerText = score;
     }
   });
 
@@ -147,7 +154,7 @@ function dropBlock() {
   clearInterval(downInterval);
   downInterval = setInterval(() => {
     moveBlock("top", 1);
-  }, 10);
+  }, 20);
 }
 
 function showGameoverText() {
@@ -180,5 +187,8 @@ document.addEventListener("keydown", (event) => {
 restartButton.addEventListener("click", () => {
   playground.innerHTML = "";
   gameText.style.display = "none";
+  score = 0;
+  scoreDisplay.innerText = score;
+  endScore.innerText = score;
   init();
 });

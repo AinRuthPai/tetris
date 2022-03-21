@@ -10,6 +10,21 @@ ul {
 body {
   height: 100%;
   overflow: hidden;
+  margin: 1rem 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 3px 3px 3px 3px gray;
 }
 
 .game_text {
@@ -27,7 +42,7 @@ body {
   font-size: 50px;
 }
 
-.game_text > button {
+.restart {
   padding: 0.5rem 1rem;
   color: #fff;
   background-color: salmon;
@@ -36,14 +51,27 @@ body {
   margin-top: 20px;
 }
 
-.score {
-  text-align: center;
+.startGame {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background-color: salmon;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.title {
   font-size: 36px;
+  margin-bottom: 1rem;
+}
+
+.score {
+  font-size: 30px;
   margin-bottom: 2rem;
 }
 
 .playground > ul {
-  border: 1px solid #333;
+  border: 4px solid #333;
   width: 250px;
   margin: 0 auto;
 }
